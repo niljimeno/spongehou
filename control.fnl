@@ -1,4 +1,4 @@
-; control.fnl - aka utils
+; control.fnl
 ; commonly used functions go here
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -25,6 +25,22 @@
   (any (map love.keyboard.isDown str)))
 
 
+;;;;;;;;;;
+;; meth ;;
+;;;;;;;;;;
+
+(fn get-normalizer [side-a side-b]
+  (let [h (math.sqrt (+ (^ side-a 2) (^ side-b 2)))]
+    (/ (/ 2 (+ side-a side-b)) h)))
+
+(fn bool-to-int [b]
+  (if b 1 0))
+
+
+
 {
  :key key
+ :map map
+ :normalizer get-normalizer
+ :bool-to-int bool-to-int
 }
