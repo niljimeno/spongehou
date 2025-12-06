@@ -29,9 +29,14 @@
 ;; meth ;;
 ;;;;;;;;;;
 
-(fn get-normalizer [side-a side-b]
-  (let [h (math.sqrt (+ (^ side-a 2) (^ side-b 2)))]
-    (/ (/ 2 (+ side-a side-b)) h)))
+(fn get-normalizer [side-x side-y]
+  (let [h (math.sqrt (+ (^ side-x 2)
+                        (^ side-y 2)))
+        angle (math.asin (/ side-y h))]
+    {
+     :x (math.cos angle)
+     :y (math.sin angle)
+    }))
 
 (fn bool-to-int [b]
   (if b 1 0))

@@ -1,13 +1,18 @@
 (love.graphics.setDefaultFilter "nearest")
 
-(local sprites (require "sprites"))
+(local enemies (require "enemies"))
 (local player (require "player"))
+(local sprites (require "sprites"))
 
 (fn love.load []
+  (love.graphics.setBackgroundColor 0.2 0.4 0.6)
+  (enemies.spawn)
   (sprites.load))
 
 (fn love.update []
-  (player.update))
+  (player.update)
+  (enemies.update))
 
 (fn love.draw []
-  (player.draw))
+  (player.draw)
+  (enemies.draw))
